@@ -36,3 +36,4 @@ aiofiles
 pypdfium2
 
 # Utilities
+pgvector

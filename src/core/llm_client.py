@@ -20,9 +20,10 @@ groq_client = OpenAI(
 )
 
 # --- OpenRouter Client (Fallback) ---
+OPENROUTER_API_KEY = settings.OPENROUTER_API_KEY or settings.OPENROUTER_API_KEY2
 openrouter_client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=settings.OPENROUTER_API_KEY,
+    api_key=OPENROUTER_API_KEY,
 )
 OPENROUTER_HEADERS = {
     "HTTP-Referer": "https://lumina.ai",

@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     # AI/LLM Settings
     GOOGLE_API_KEY: str = ""  # Kept as fallback
     OPENROUTER_API_KEY: str = ""  # OpenRouter fallback
+    OPENROUTER_API_KEY2: Optional[str] = ""  # Optional second OpenRouter key
     GROQ_API_KEY: str = ""  # Primary LLM (Groq free tier)
     HF_API_KEY: str = ""  # HuggingFace Inference API (free tier embeddings)
     

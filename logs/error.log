@@ -24369,3 +24369,215 @@ postgrest.exceptions.APIError: {'message': 'Cannot coerce the result to a single
 2025-10-09 00:50:34,354 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
 2025-10-09 00:50:34,354 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
 2025-10-09 00:55:49,524 - src.routers.auth - ERROR - Error in login: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:54:11,898 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 00:54:13,725 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 00:54:13,732 - main - INFO - Supabase connection successful
+2026-07-01 00:54:13,732 - main - INFO - API routers loaded successfully
+2026-07-01 00:54:55,685 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 00:54:55,688 - main - INFO - Response: 200 - 0.003s
+2026-07-01 00:54:55,694 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 00:54:56,363 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 00:54:58,579 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2026-07-01 00:54:58,612 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 00:54:58,677 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:54:58,677 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:54:58,677 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:54:58,682 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 00:54:58,689 - main - INFO - Response: 500 - 2.996s
+2026-07-01 00:56:13,281 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 00:56:13,971 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.n200626%40rguktn.ac.in "HTTP/2 200 OK"
+2026-07-01 00:56:15,872 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2026-07-01 00:56:15,877 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 00:56:15,897 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:56:15,897 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:56:15,897 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:56:15,902 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 00:56:15,912 - main - INFO - Response: 500 - 2.632s
+2026-07-01 00:57:29,467 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 00:57:29,924 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanagau18112004%40gmail.com "HTTP/2 200 OK"
+2026-07-01 00:57:30,367 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 429 Too Many Requests"
+2026-07-01 00:57:30,371 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: email rate limit exceeded
+2026-07-01 00:57:30,371 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 00:57:30,395 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:57:30,395 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:57:30,395 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 00:57:30,400 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 00:57:30,405 - main - INFO - Response: 500 - 0.939s
+2026-07-01 00:58:00,372 - main - INFO - Request: OPTIONS /api/auth/login
+2026-07-01 00:58:00,374 - main - INFO - Response: 200 - 0.002s
+2026-07-01 00:58:00,379 - main - INFO - Request: POST /api/auth/login
+2026-07-01 00:58:00,841 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.testmail%40gmail.com "HTTP/2 200 OK"
+2026-07-01 00:58:00,841 - src.routers.auth - WARNING - Login attempt with non-existent email: testmail@gmail.com
+2026-07-01 00:58:00,845 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 00:58:00,845 - main - INFO - Response: 401 - 0.466s
+2026-07-01 00:58:25,170 - main - INFO - Request: POST /api/auth/login
+2026-07-01 00:58:25,452 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 00:58:25,456 - src.routers.auth - WARNING - Login attempt with non-existent email: kesanachinni18@gmail.com
+2026-07-01 00:58:25,459 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 00:58:25,459 - main - INFO - Response: 401 - 0.289s
+2026-07-01 01:06:04,438 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:07:32,541 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:07:34,131 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:07:34,135 - main - INFO - Supabase connection successful
+2026-07-01 01:07:34,138 - main - INFO - API routers loaded successfully
+2026-07-01 01:28:02,956 - main - INFO - Request: OPTIONS /api/auth/login
+2026-07-01 01:28:03,000 - main - INFO - Response: 200 - 0.049s
+2026-07-01 01:28:03,016 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:28:04,825 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:28:04,845 - src.routers.auth - WARNING - Login attempt with non-existent email: kesanachinni18@gmail.com
+2026-07-01 01:28:04,853 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:28:04,860 - main - INFO - Response: 401 - 1.845s
+2026-07-01 01:29:53,715 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:32:57,937 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:32:59,704 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:32:59,710 - main - INFO - Supabase connection successful
+2026-07-01 01:32:59,712 - main - INFO - API routers loaded successfully
+2026-07-01 01:33:14,116 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 01:33:14,126 - main - INFO - Response: 200 - 0.010s
+2026-07-01 01:33:14,140 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 01:33:15,104 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:33:15,522 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 429 Too Many Requests"
+2026-07-01 01:33:15,535 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: email rate limit exceeded
+2026-07-01 01:33:15,546 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 01:33:15,725 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:33:15,725 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:33:15,725 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:33:15,764 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 01:33:15,796 - main - INFO - Response: 500 - 1.656s
+2026-07-01 01:34:29,347 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:34:29,752 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.n200626%40rguktn.ac.in "HTTP/2 200 OK"
+2026-07-01 01:34:29,761 - src.routers.auth - WARNING - Login attempt with non-existent email: n200626@rguktn.ac.in
+2026-07-01 01:34:29,767 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:34:29,786 - main - INFO - Response: 401 - 0.440s
+2026-07-01 01:34:52,021 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:35:56,656 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:35:57,850 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:35:57,851 - main - INFO - Supabase connection successful
+2026-07-01 01:35:57,855 - main - INFO - API routers loaded successfully
+2026-07-01 01:35:57,869 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:35:58,043 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:35:58,044 - src.routers.auth - WARNING - Login attempt with non-existent email: kesanachinni18@gmail.com
+2026-07-01 01:35:58,045 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:35:58,046 - main - INFO - Response: 401 - 0.178s
+2026-07-01 01:36:15,050 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 01:36:15,383 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:36:15,840 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 429 Too Many Requests"
+2026-07-01 01:36:15,847 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: email rate limit exceeded
+2026-07-01 01:36:15,852 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 01:36:15,884 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:15,884 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:15,884 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:15,898 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 01:36:15,907 - main - INFO - Response: 500 - 0.857s
+2026-07-01 01:36:42,300 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 01:36:42,758 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:36:43,070 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 429 Too Many Requests"
+2026-07-01 01:36:43,083 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: email rate limit exceeded
+2026-07-01 01:36:43,124 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 01:36:43,238 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:43,238 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:43,238 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:36:43,274 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 01:36:43,298 - main - INFO - Response: 500 - 0.997s
+2026-07-01 01:47:03,327 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:48:22,148 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:48:23,608 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:48:23,614 - main - INFO - Supabase connection successful
+2026-07-01 01:48:23,616 - main - INFO - API routers loaded successfully
+2026-07-01 01:48:31,050 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 01:48:31,053 - main - INFO - Response: 200 - 0.003s
+2026-07-01 01:48:31,061 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 01:48:31,449 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.kesanachinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:48:31,830 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 429 Too Many Requests"
+2026-07-01 01:48:31,837 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: email rate limit exceeded
+2026-07-01 01:48:31,840 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 01:48:31,873 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:48:31,873 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:48:31,873 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:48:31,879 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 01:48:31,883 - main - INFO - Response: 500 - 0.822s
+2026-07-01 01:54:05,952 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:54:57,986 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:54:59,346 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:54:59,350 - main - INFO - Supabase connection successful
+2026-07-01 01:54:59,351 - main - INFO - API routers loaded successfully
+2026-07-01 01:54:59,369 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 01:54:59,555 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.chinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:55:01,480 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2026-07-01 01:55:01,495 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\kesan\Desktop\Projects\Lumina\backend\newven\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 01:55:01,514 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:55:01,514 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:55:01,514 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 01:55:01,516 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 01:55:01,521 - main - INFO - Response: 500 - 2.152s
+2026-07-01 01:57:03,669 - main - INFO - Request: OPTIONS /api/auth/login
+2026-07-01 01:57:03,674 - main - INFO - Response: 200 - 0.005s
+2026-07-01 01:57:03,685 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:57:04,422 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.chinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:57:04,428 - src.routers.auth - WARNING - Login attempt with non-existent email: chinni18@gmail.com
+2026-07-01 01:57:04,442 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:57:04,458 - main - INFO - Response: 401 - 0.774s
+2026-07-01 01:57:16,756 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:57:17,221 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.chinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:57:17,227 - src.routers.auth - WARNING - Login attempt with non-existent email: chinni18@gmail.com
+2026-07-01 01:57:17,233 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:57:17,245 - main - INFO - Response: 401 - 0.490s
+2026-07-01 01:57:20,208 - main - INFO - Request: POST /api/auth/login
+2026-07-01 01:57:20,378 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.chinni18%40gmail.com "HTTP/2 200 OK"
+2026-07-01 01:57:20,384 - src.routers.auth - WARNING - Login attempt with non-existent email: chinni18@gmail.com
+2026-07-01 01:57:20,391 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 01:57:20,401 - main - INFO - Response: 401 - 0.193s
+2026-07-01 01:58:19,505 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 01:59:50,552 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 01:59:51,612 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 01:59:51,614 - main - INFO - Supabase connection successful
+2026-07-01 01:59:51,617 - main - INFO - API routers loaded successfully
+2026-07-01 02:00:14,820 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 02:00:14,825 - main - INFO - Response: 200 - 0.005s
+2026-07-01 02:00:14,836 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 02:00:14,895 - main - INFO - Response: 422 - 0.059s
+2026-07-01 02:01:10,506 - main - INFO - Request: POST /api/auth/login
+2026-07-01 02:01:10,834 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.chinni8%40gmail.com "HTTP/2 200 OK"
+2026-07-01 02:01:10,840 - src.routers.auth - WARNING - Login attempt with non-existent email: chinni8@gmail.com
+2026-07-01 02:01:10,846 - main - WARNING - HTTP exception: 401 - Invalid email or password
+2026-07-01 02:01:10,854 - main - INFO - Response: 401 - 0.347s

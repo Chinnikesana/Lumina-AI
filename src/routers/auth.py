@@ -53,7 +53,6 @@ async def signup(user_data: UserCreate):
 
         # Create new user in application users table; prefer auth user id if available
         new_user_data = {
-            "user_id": auth_user_id,  # if None, Supabase table may default generate UUID
             "first_name": user_data.first_name,
             "last_name": user_data.last_name,
             "email": user_data.email,
@@ -61,6 +60,9 @@ async def signup(user_data: UserCreate):
             "created_at": datetime.utcnow().isoformat(),
             "status": "active"
         }
+        if auth_user_id:
+            new_user_data["user_id"] = auth_user_id
+            
         user_response = supabase_client.table('users').insert(new_user_data).execute()
         if not user_response.data:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to create user in database")
