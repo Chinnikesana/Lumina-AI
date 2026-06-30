@@ -1,0 +1,276 @@
+
+
+# src/services/document_processing_service.py
+
+import asyncio
+import json
+import traceback
+from typing import Dict, List, Any, Optional, AsyncGenerator, TypedDict
+
+# LangGraph and LangChain imports
+from langgraph.graph import StateGraph, END
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage
+
+# Project-specific imports
+from ..core.logger import get_logger
+from ..core.supabase_client import supabase_client
+from ..core.config import settings
+
+# PDF Parsing library imports
+import spacy
+from spacy_layout import spaCyLayout
+
+logger = get_logger(__name__)
+
+# --- 1. Initialize Libraries ---
+
+# Initialize spaCy and the layout component
+# This is safe to do globally as it's a one-time setup
+nlp = spacy.blank("en")
+layout = spaCyLayout(nlp)
+
+# Initialize LLMs
+llm_gemini_flash = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=settings.GOOGLE_API_KEY)
+llm_gemini_pro = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=settings.GOOGLE_API_KEY)
+
+
+# --- 2. Define the LangGraph State ---
+
+class GraphState(TypedDict):
+    """
+    Represents the state of our graph.
+    """
+    document_id: str
+    local_path: str
+    user_input: Optional[str]
+    
+    # Data populated by the graph nodes
+    parsed_data: Optional[Dict[str, Any]]
+    overview_text: Optional[str]
+    chunks: Optional[List[Any]]
+    
+    # State for the streaming part
+    current_context: Optional[str]
+    narration_chunks: List[Dict[str, Any]]
+
+
+# --- 3. Define the Graph Nodes ---
+# Each node is a function that takes the state and returns a dictionary to update the state.
+
+def parse_document_node(state: GraphState) -> Dict[str, Any]:
+    """Parses the document from the local_path and updates the state."""
+    logger.info(f"NODE[parse_document]: Starting for path: {state['local_path']}")
+    try:
+        doc = layout(state['local_path'])
+        
+        text_segments: List[Dict[str, Any]] = []
+        bounding_box_index: Dict[str, Any] = {}
+        segment_counter = 1
+
+        for span in doc.spans.get("layout", []):
+            if not span.text.strip():
+                continue
+            span_layout = span._.layout
+            segment_id = f"seg_{segment_counter}"
+            segment = {
+                "id": segment_id, "text": span.text, "label": span.label_,
+                "bbox": {"x": span_layout.x, "y": span_layout.y, "width": span_layout.width, "height": span_layout.height},
+                "page": span_layout.page_no,
+            }
+            text_segments.append(segment)
+            bounding_box_index[segment_id] = segment
+            segment_counter += 1
+        
+        parsed_data = {"text_segments": text_segments, "bounding_box_index": bounding_box_index}
+        logger.info(f"NODE[parse_document]: Successfully parsed {len(text_segments)} segments.")
+        return {"parsed_data": parsed_data}
+    except Exception as e:
+        logger.error(f"NODE[parse_document]: CRITICAL FAILURE: {e}")
+        traceback.print_exc()
+        raise
+
+async def generate_overview_node(state: GraphState) -> Dict[str, Any]:
+    """Generates the document overview using an LLM."""
+    logger.info("NODE[generate_overview]: Calling LLM for summary...")
+    parsed_data = state['parsed_data']
+    full_text = " ".join(seg["text"] for seg in parsed_data["text_segments"])
+
+    prompt = f"""
+    You are an expert summarizer. Create a concise, engaging 2-3 sentence overview for the following document text.
+    User Instructions: {state['user_input'] or 'None'}
+    Document Text (first 20000 chars):
+    ---
+    {full_text[:20000]}
+    ---
+    Your output MUST be a valid JSON object with a single key: "overview_text".
+    Example: {{"overview_text": "This document introduces..."}}
+    """
+    response = await llm_gemini_flash.ainvoke([HumanMessage(content=prompt)])
+    try:
+        cleaned_content = response.content.strip().replace("```json", "").replace("```", "")
+        overview_data = json.loads(cleaned_content)
+        overview_text = overview_data.get("overview_text", "Failed to parse overview.")
+        logger.info(f"NODE[generate_overview]: LLM returned overview.")
+        return {"overview_text": overview_text}
+    except json.JSONDecodeError:
+        logger.warning("NODE[generate_overview]: Failed to parse JSON, returning raw LLM content.")
+        return {"overview_text": response.content}
+
+def persist_initial_state_node(state: GraphState) -> Dict[str, Any]:
+    """Chunks the data and saves the complete initial state to the database."""
+    logger.info(f"NODE[persist_state]: Saving initial state for doc_id: {state['document_id']}")
+    try:
+        text_segments = state['parsed_data'].get("text_segments", [])
+        chunk_size = 20
+        chunks = [text_segments[i:i + chunk_size] for i in range(0, len(text_segments), chunk_size)]
+        
+        initial_narration_data = {
+            "document_id": state['document_id'],
+            "context": state['overview_text'],
+            "narration_bbox": {
+                "overview": {"transcript_text": state['overview_text'], "duration": len(state['overview_text'].split()) * 200},
+                "narrations": [],
+                "bounding_box_index": state['parsed_data'].get("bounding_box_index", {}),
+                "chunks": chunks,
+                "processed_chunk_index": -1
+            },
+            "status": "processing"
+        }
+        supabase_client.table('narrations').insert(initial_narration_data).execute()
+        logger.info("NODE[persist_state]: Successfully inserted initial state into 'narrations' table.")
+        return {"chunks": chunks} # Pass chunks back into state just in case
+    except Exception as e:
+        logger.error(f"NODE[persist_state]: FAILED to save state to DB: {e}")
+        traceback.print_exc()
+        raise
+
+async def generate_narration_chunk_node(state: GraphState) -> Dict[str, Any]:
+    """Generates narration for a single chunk. This node is called manually during streaming."""
+    logger.info("NODE[generate_narration_chunk]: Generating narration for a new chunk.")
+    
+    current_chunk = state['chunks'][state['current_chunk_index']]
+    current_context = state['current_context']
+    user_input = state['user_input']
+
+    formatted_chunk_text = "\n".join([f'- ID: {s["id"]}, Type: {s.get("label","text")}, Text: "{s["text"].strip()}"' for s in current_chunk])
+    
+    prompt = f"""
+    You are a detailed academic teacher. Your task is to explain the following structured chunk of a document...
+    Previous Context Summary: {current_context}
+    Current Structured Chunk to Explain:\n---\n{formatted_chunk_text}\n---
+    User Instructions: {user_input or 'None'}
+    Guidelines: ...
+    Output Format (JSON only): {{"segments": [{{...}}], "context_summary_for_next_chunk": "..."}}
+    """
+    
+    response = await llm_gemini_pro.ainvoke(prompt)
+    try:
+        cleaned_content = response.content.strip().replace("```json", "").replace("```", "")
+        narration_result = json.loads(cleaned_content)
+        
+        # We need to append to the list in the state
+        updated_narration_chunks = state['narration_chunks'] + [narration_result]
+
+        return {
+            "narration_chunks": updated_narration_chunks,
+            "current_context": narration_result.get("context_summary_for_next_chunk", current_context)
+        }
+    except json.JSONDecodeError:
+        logger.error(f"NODE[generate_narration_chunk]: Failed to decode JSON from LLM response.")
+        return {}
+
+
+# --- 4. Main Service Class ---
+
+class DocumentProcessingService:
+    def __init__(self):
+        self.initial_graph = self._build_initial_graph()
+
+    def _build_initial_graph(self):
+        """Builds the LangGraph workflow for the initial document processing on upload."""
+        workflow = StateGraph(GraphState)
+        workflow.add_node("parse_document", parse_document_node)
+        workflow.add_node("generate_overview", generate_overview_node)
+        workflow.add_node("persist_initial_state", persist_initial_state_node)
+        
+        workflow.set_entry_point("parse_document")
+        workflow.add_edge("parse_document", "generate_overview")
+        workflow.add_edge("generate_overview", "persist_initial_state")
+        workflow.add_edge("persist_initial_state", END)
+        
+        return workflow.compile()
+
+    async def initial_processing(self, document_id: str, local_path: str, user_input: Optional[str] = None) -> str:
+        """
+        Orchestrates the initial processing for the /upload endpoint by invoking the LangGraph.
+        """
+        print("\n--- [Service] Starting Initial Processing (LangGraph) ---")
+        initial_state = GraphState(
+            document_id=document_id,
+            local_path=local_path,
+            user_input=user_input,
+            parsed_data=None,
+            overview_text=None,
+            chunks=None,
+            narration_chunks=[],
+            current_context=None
+        )
+        
+        final_state = await self.initial_graph.ainvoke(initial_state)
+        print("--- [Service] Initial Processing Graph Complete ---")
+        return final_state['overview_text']
+
+    async def stream_narration_chunks(self, document_id: str, user_id: str) -> AsyncGenerator[Dict, None]:
+        """
+        Handles the /stream logic by loading state and calling the narration node in a loop.
+        """
+        narration_resp = supabase_client.table('narrations').select('*').eq('document_id', document_id).execute()
+        if not narration_resp.data:
+            yield {"type": "error", "message": "Narration state not found for this document."}
+            return
+
+        narration_data = narration_resp.data[0]
+        state_from_db = narration_data.get("narration_bbox", {})
+        chunks = state_from_db.get("chunks", [])
+        last_processed_index = state_from_db.get("processed_chunk_index", -1)
+        current_context = narration_data.get("context")
+        
+        user_input_resp = supabase_client.table('documents').select('extra_input').eq('document_id', document_id).single().execute()
+        user_input = user_input_resp.data.get('extra_input') if user_input_resp.data else None
+        
+        print(f"\n--- [Stream] Starting for Doc ID: {document_id}, starting at chunk {last_processed_index + 1} ---")
+
+        for i in range(last_processed_index + 1, len(chunks)):
+            # Prepare state for the node
+            current_state_for_node = GraphState(
+                document_id=document_id, user_input=user_input,
+                chunks=chunks, narration_chunks=[], # Start with empty list for this step
+                current_chunk_index=i, current_context=current_context
+            )
+            
+            # Manually invoke the narration node
+            updated_state_dict = await generate_narration_chunk_node(current_state_for_node)
+            narration_result = updated_state_dict['narration_chunks'][0]
+            current_context = updated_state_dict['current_context']
+            
+            yield {"type": "narration_chunk", "chunk": {**narration_result, "chunk_no": i}}
+            print(f"[Stream] Emitted SSE for chunk {i}")
+
+            # Persist the updated state to the database
+            state_from_db['narrations'].append(narration_result)
+            state_from_db['processed_chunk_index'] = i
+            supabase_client.table('narrations').update({
+                "narration_bbox": state_from_db,
+                "context": current_context
+            }).eq('document_id', document_id).execute()
+            print(f"[Stream] Persisted state for chunk {i}")
+
+        print("[Stream] All chunks processed. Marking document as complete.")
+        supabase_client.table('documents').update({"status": "completed"}).eq('document_id', document_id).execute()
+        supabase_client.table('narrations').update({"status": "completed"}).eq('document_id', document_id).execute()
+        yield {"type": "completion", "message": "Document processing completed successfully."}
+        print("--- Stream Complete ---")
+
+# Global service instance
+document_processing_service = DocumentProcessingService()

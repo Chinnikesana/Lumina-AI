@@ -1,0 +1,6 @@
+venv
+newven/
+.env
+temp_documents/
+model/
+setup_instructions.md

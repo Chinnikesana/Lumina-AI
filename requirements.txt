@@ -1,0 +1,38 @@
+# Core framework
+fastapi
+uvicorn[standard]
+
+# Database & ORM
+sqlalchemy[asyncio]
+asyncpg
+
+# Authentication
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt
+
+# Environment & multipart
+python-multipart
+python-dotenv
+
+# Pydantic
+pydantic
+pydantic-settings
+pydantic[email]
+
+# Supabase client
+supabase
+httpx
+
+# AI/LLM (lightweight — API-based, no local models)
+openai               # Used for Groq + OpenRouter (OpenAI-compatible SDK)
+google-generativeai  # Kept for Gemini fallback (lightweight, no torch)
+
+# NLP and PDF (spacy-layout for precise bounding boxes)
+spacy
+spacy-layout
+pymupdf
+aiofiles
+pypdfium2
+
+# Utilities
