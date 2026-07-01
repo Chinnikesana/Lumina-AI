@@ -67,7 +67,6 @@ async def get_embeddings(texts: List[str]) -> List[List[float]]:
                     if isinstance(emb, list) and len(emb) > 0:
                         if isinstance(emb[0], list):
                             # Token-level embeddings returned — mean pool them
-                            import numpy as np
                             pooled = [sum(x) / len(x) for x in zip(*emb)]
                             processed.append(pooled)
                         else:

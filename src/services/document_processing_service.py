@@ -142,9 +142,14 @@ async def parse_document(document_id: str, local_path: str) -> Dict[str, Any]:
         raise
 
 async def generate_overview(parsed_data: Dict[str, Any], user_input: Optional[str]) -> str:
-    """Generates the document overview."""
+    """Generates the document overview using the first chunk of text to avoid payload limits."""
     logger.info("Calling LLM for summary overview...")
     full_text = " ".join(seg["text"] for seg in parsed_data["text_segments"])
+    
+    # Chunk the text: take only the first ~4000 characters (approx 1000 tokens) 
+    # to avoid the 'Payload Too Large' error on Groq while generating the initial short overview.
+    text_chunk_for_overview = full_text[:4000]
+    
     prompt = f"""
     You are an expert educator and a friendly guide. Read the document text below and create a short, welcoming overview. 
     It needs to be simple, engaging, and set the stage for the lesson.
@@ -153,8 +158,8 @@ async def generate_overview(parsed_data: Dict[str, Any], user_input: Optional[st
     User's Custom Instructions:
     {user_input}
 
-    Full Document Text:
-    {full_text}
+    Document Text (Beginning):
+    {text_chunk_for_overview}
     
     Your Task:
     Based on the text and guidelines, generate the overview. You MUST respond ONLY with a valid JSON object in the following format:
@@ -326,7 +331,12 @@ class DocumentProcessingService:
                 for chunk, embedding in zip(chunks, embeddings)
             ]
             
-            supabase_client.table('document_chunks').insert(rows_to_insert).execute()
+            # Insert in batches of 50 to avoid Supabase PostgREST payload limits
+            batch_size = 50
+            for i in range(0, len(rows_to_insert), batch_size):
+                batch = rows_to_insert[i:i+batch_size]
+                supabase_client.table('document_chunks').insert(batch).execute()
+                
             logger.info(f"Successfully indexed {len(chunks)} chunks for doc_id: {document_id}")
             
         except Exception as e:

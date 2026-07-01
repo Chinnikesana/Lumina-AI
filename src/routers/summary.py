@@ -42,12 +42,16 @@ async def generate_and_store_summary(document_id: str, user_id: str = Query(...)
 
     logger.info(f"Generating summary for document_id {document_id} using LLM client...")
     
+    # Chunk the document to ensure we don't hit payload limits, especially when falling back to Groq
+    # We take the first ~24,000 characters (~6,000 tokens) for the summary generation.
+    chunked_content = doc_content[:24000]
+    
     # This detailed prompt guides the LLM to act as a tutor and structure the summary effectively.
     prompt = (
         "You are an expert educator with a talent for making complex topics easy to understand. Your task is to read the following document content and create a detailed, yet simple, summary. "
         "The goal is to give someone a complete and clear understanding of the document's key information, as if you were explaining it to them after they've listened to a full narration.\n\n"
         "**Document Content:**\n---\n"
-        f"{doc_content}\n"
+        f"{chunked_content}\n"
         "---\n\n"
         "**Your Task:**\n"
         "Generate the summary in two parts. First, a narrative paragraph that tells the overall 'story' of the document. Second, a list of detailed bullet points that capture the most critical facts, findings, and conclusions.\n"
@@ -68,7 +72,8 @@ async def generate_and_store_summary(document_id: str, user_id: str = Query(...)
         response_text = await call_llm(
             prompt=prompt,
             temperature=0.5,
-            json_mode=True
+            json_mode=True,
+            prefer_gemini=True  # Prefer Gemini as requested by the user
         )
         
         summary_data = parse_json_response(response_text)
