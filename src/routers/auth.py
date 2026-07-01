@@ -27,32 +27,35 @@ async def signup(user_data: UserCreate):
     - **password**: User's password (min 6 characters)
     """
     try:
-        # Check if user already exists using Supabase table
-        existing_user_response = supabase_client.table('users').select('*').eq('email', user_data.email).execute()
-        if existing_user_response.data:
-            logger.warning(f"Signup attempt with existing email: {user_data.email}")
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
-
-        # First: create user in Supabase Auth so frontend auth works
-        auth_user_id = None
+        # Step 1: Create user in Supabase Auth
         try:
             auth_res = supabase_client.auth.sign_up({
                 "email": user_data.email,
                 "password": user_data.password,
             })
-            # supabase-py v2 returns a Response-like object; try to read user id robustly
-            auth_user = getattr(auth_res, 'user', None) or getattr(auth_res, 'data', None)
-            if auth_user and getattr(auth_user, 'id', None):
-                auth_user_id = str(auth_user.id)
         except Exception as e:
-            # If already exists in auth, we continue to create in our table
-            logger.warning(f"Supabase Auth sign_up skipped/failed: {e}")
+            error_msg = str(e)
+            logger.warning(f"Supabase Auth signup failed: {error_msg}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=error_msg
+            )
 
-        # Hash password for our own users table
+        # Step 2: Extract user_id from Supabase Auth response
+        auth_user = getattr(auth_res, 'user', None)
+        if not auth_user or not getattr(auth_user, 'id', None):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Failed to create account. Email may already be registered."
+            )
+        
+        auth_user_id = str(auth_user.id)
+
+        # Step 3: Hash password and insert into users table
         hashed_password = get_password_hash(user_data.password)
-
-        # Create new user in application users table; prefer auth user id if available
+        
         new_user_data = {
+            "user_id": auth_user_id,
             "first_name": user_data.first_name,
             "last_name": user_data.last_name,
             "email": user_data.email,
@@ -60,17 +63,18 @@ async def signup(user_data: UserCreate):
             "created_at": datetime.utcnow().isoformat(),
             "status": "active"
         }
-        if auth_user_id:
-            new_user_data["user_id"] = auth_user_id
             
         user_response = supabase_client.table('users').insert(new_user_data).execute()
         if not user_response.data:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to create user in database")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to create user in database"
+            )
 
         created_user = user_response.data[0]
         logger.info(f"New user created: {created_user['email']}")
 
-        # Create token response for backend session
+        # Step 4: Create and return token response
         user_response_data = {
             "user_id": str(created_user['user_id']),
             "first_name": created_user['first_name'],

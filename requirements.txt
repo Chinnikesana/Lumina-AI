@@ -37,3 +37,4 @@ pypdfium2
 
 # Utilities
 pgvector
+onnxruntime

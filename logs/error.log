@@ -24581,3 +24581,294 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2026-07-01 02:01:10,840 - src.routers.auth - WARNING - Login attempt with non-existent email: chinni8@gmail.com
 2026-07-01 02:01:10,846 - main - WARNING - HTTP exception: 401 - Invalid email or password
 2026-07-01 02:01:10,854 - main - INFO - Response: 401 - 0.347s
+2026-07-01 10:43:17,938 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 10:43:22,366 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 10:43:22,384 - main - INFO - Supabase connection successful
+2026-07-01 10:43:22,461 - main - INFO - API routers loaded successfully
+2026-07-01 10:47:07,747 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 10:47:41,237 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 10:47:43,069 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 10:47:43,079 - main - INFO - Supabase connection successful
+2026-07-01 10:47:43,082 - main - INFO - API routers loaded successfully
+2026-07-01 10:48:57,929 - main - INFO - Request: OPTIONS /api/user/me
+2026-07-01 10:48:57,933 - main - INFO - Request: OPTIONS /api/user/me
+2026-07-01 10:48:57,943 - main - INFO - Response: 200 - 0.014s
+2026-07-01 10:48:57,958 - main - INFO - Response: 200 - 0.025s
+2026-07-01 10:48:57,963 - main - INFO - Request: GET /api/user/me
+2026-07-01 10:48:59,393 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&user_id=eq.80ab8494-875b-4378-aa3a-d81354d9c760 "HTTP/2 200 OK"
+2026-07-01 10:48:59,396 - main - WARNING - HTTP exception: 404 - User not found
+2026-07-01 10:48:59,399 - main - INFO - Response: 404 - 1.436s
+2026-07-01 10:48:59,407 - main - INFO - Request: GET /api/user/me
+2026-07-01 10:49:00,410 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&user_id=eq.80ab8494-875b-4378-aa3a-d81354d9c760 "HTTP/2 200 OK"
+2026-07-01 10:49:00,412 - main - WARNING - HTTP exception: 404 - User not found
+2026-07-01 10:49:00,415 - main - INFO - Response: 404 - 1.009s
+2026-07-01 10:49:14,846 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 10:49:14,849 - main - INFO - Response: 200 - 0.002s
+2026-07-01 10:49:14,858 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 10:49:15,445 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.abc%40gmail.com "HTTP/2 200 OK"
+2026-07-01 10:49:16,798 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 400 Bad Request"
+2026-07-01 10:49:16,809 - src.routers.auth - WARNING - Supabase Auth sign_up skipped/failed: Email address "abc@gmail.com" is invalid
+2026-07-01 10:49:16,816 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\ChinniKesana\OneDrive - Kodefast\Documents\Lumina-updated\Lumina-AI\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-01 10:49:16,860 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 10:49:16,860 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 10:49:16,860 - src.routers.auth - ERROR - Error in signup: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-07-01 10:49:16,867 - main - WARNING - HTTP exception: 500 - Failed to create user account
+2026-07-01 10:49:16,878 - main - INFO - Response: 500 - 2.021s
+2026-07-01 10:52:26,357 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 10:52:26,367 - main - INFO - Response: 422 - 0.010s
+2026-07-01 10:53:49,192 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 10:53:49,198 - main - INFO - Response: 422 - 0.006s
+2026-07-01 11:01:14,676 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 11:11:52,976 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 11:11:55,446 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 11:11:55,463 - main - INFO - Supabase connection successful
+2026-07-01 11:11:55,474 - main - INFO - API routers loaded successfully
+2026-07-01 11:12:32,480 - main - INFO - Request: OPTIONS /api/auth/signup
+2026-07-01 11:12:32,484 - main - INFO - Response: 200 - 0.004s
+2026-07-01 11:12:32,496 - main - INFO - Request: POST /api/auth/signup
+2026-07-01 11:12:35,159 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+2026-07-01 11:12:36,050 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users "HTTP/2 201 Created"
+2026-07-01 11:12:36,069 - src.routers.auth - INFO - New user created: aasrichinni@gmail.com
+2026-07-01 11:12:36,181 - main - INFO - Response: 201 - 3.685s
+2026-07-01 11:12:36,262 - main - INFO - Request: OPTIONS /api/documents/
+2026-07-01 11:12:36,267 - main - INFO - Request: OPTIONS /api/documents/
+2026-07-01 11:12:36,273 - main - INFO - Response: 200 - 0.011s
+2026-07-01 11:12:36,281 - main - INFO - Response: 200 - 0.013s
+2026-07-01 11:12:36,300 - main - INFO - Request: GET /api/documents/
+2026-07-01 11:12:36,758 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 11:12:36,761 - src.routers.documents - INFO - Retrieved 0 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 11:12:36,763 - main - INFO - Response: 200 - 0.464s
+2026-07-01 11:12:36,772 - main - INFO - Request: GET /api/documents/
+2026-07-01 11:12:36,963 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 11:12:36,966 - src.routers.documents - INFO - Retrieved 0 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 11:12:36,969 - main - INFO - Response: 200 - 0.197s
+2026-07-01 11:12:44,430 - main - INFO - Request: OPTIONS /api/auth/logout
+2026-07-01 11:12:44,432 - main - INFO - Response: 200 - 0.002s
+2026-07-01 11:12:44,439 - main - INFO - Request: PUT /api/auth/logout
+2026-07-01 11:12:44,448 - src.routers.auth - INFO - User logout
+2026-07-01 11:12:44,453 - main - INFO - Response: 200 - 0.014s
+2026-07-01 11:12:58,117 - main - INFO - Request: OPTIONS /api/auth/login
+2026-07-01 11:12:58,122 - main - INFO - Response: 200 - 0.005s
+2026-07-01 11:12:58,132 - main - INFO - Request: POST /api/auth/login
+2026-07-01 11:12:58,990 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&email=eq.aasrichinni%40gmail.com "HTTP/2 200 OK"
+2026-07-01 11:12:59,787 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:12:59,795 - src.routers.auth - INFO - Successful login: aasrichinni@gmail.com
+2026-07-01 11:12:59,809 - main - INFO - Response: 200 - 1.677s
+2026-07-01 11:12:59,841 - main - INFO - Request: GET /api/documents/
+2026-07-01 11:13:00,052 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 11:13:00,074 - src.routers.documents - INFO - Retrieved 0 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 11:13:00,087 - main - INFO - Response: 200 - 0.246s
+2026-07-01 11:13:00,107 - main - INFO - Request: GET /api/documents/
+2026-07-01 11:13:00,317 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 11:13:00,324 - src.routers.documents - INFO - Retrieved 0 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 11:13:00,328 - main - INFO - Response: 200 - 0.222s
+2026-07-01 11:13:14,028 - main - INFO - Request: OPTIONS /api/documents/upload
+2026-07-01 11:13:14,031 - main - INFO - Response: 200 - 0.004s
+2026-07-01 11:13:14,041 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 11:13:15,750 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/af2a0b92-3df7-4ac0-8d58-2b3c5a7c3279/original_chinni_kesana_web_dev.pdf "HTTP/2 200 OK"
+2026-07-01 11:13:16,071 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents "HTTP/2 201 Created"
+2026-07-01 11:13:16,080 - src.routers.documents - INFO - Starting initial processing for document_id: af2a0b92-3df7-4ac0-8d58-2b3c5a7c3279
+2026-07-01 11:13:16,082 - src.services.document_processing_service - INFO - parse_document: Starting for path: C:\Users\CHINNI~1\AppData\Local\Temp\tmp25_68fuu.pdf
+2026-07-01 11:13:16,098 - docling.datamodel.document - INFO - detected formats: [<InputFormat.PDF: 'pdf'>]
+2026-07-01 11:13:16,599 - docling.document_converter - INFO - Going to convert document batch...
+2026-07-01 11:13:16,605 - docling.document_converter - INFO - Initializing pipeline for StandardPdfPipeline with options hash 259bce8b6ebd955098094819c170ffe4
+2026-07-01 11:13:16,714 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:13:16,737 - docling.models.factories - INFO - Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+2026-07-01 11:13:16,805 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:13:16,893 - docling.models.factories - INFO - Registered ocr engines: ['auto', 'easyocr', 'kserve_v2_ocr', 'nemotron-ocr', 'ocrmac', 'rapidocr', 'tesserocr', 'tesseract']
+2026-07-01 11:13:17,083 - docling.models.stages.ocr.auto_ocr_model - INFO - rapidocr cannot be used because onnxruntime is not installed.
+2026-07-01 11:13:17,087 - docling.models.stages.ocr.auto_ocr_model - INFO - easyocr cannot be used because it is not installed.
+2026-07-01 11:13:17,774 - docling.utils.accelerator_utils - INFO - Accelerator device: 'cpu'
+2026-07-01 11:13:17,837 - src.services.document_processing_service - ERROR - CRITICAL FAILURE in parse_document: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,837 - src.services.document_processing_service - ERROR - CRITICAL FAILURE in parse_document: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,837 - src.services.document_processing_service - ERROR - CRITICAL FAILURE in parse_document: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,860 - src.routers.documents - ERROR - Upload failed critically: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,860 - src.routers.documents - ERROR - Upload failed critically: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,860 - src.routers.documents - ERROR - Upload failed critically: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,878 - src.routers.documents - INFO - Cleaned up temp file: C:\Users\CHINNI~1\AppData\Local\Temp\tmp25_68fuu.pdf
+2026-07-01 11:13:17,879 - main - WARNING - HTTP exception: 500 - Failed to upload document: Unsupported configuration: torch.PP-OCRv6.det.small
+2026-07-01 11:13:17,882 - main - INFO - Response: 500 - 3.841s
+2026-07-01 11:47:25,560 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 11:48:19,918 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 11:48:21,103 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 11:48:21,110 - main - INFO - Supabase connection successful
+2026-07-01 11:48:21,111 - main - INFO - API routers loaded successfully
+2026-07-01 11:49:14,968 - main - INFO - Request: OPTIONS /api/documents/upload
+2026-07-01 11:49:14,970 - main - INFO - Response: 200 - 0.001s
+2026-07-01 11:49:14,983 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 11:49:16,205 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/0a123e2e-357b-4cdc-825f-7a6a8172210a/original_chinni_kesana_web_dev.pdf "HTTP/2 200 OK"
+2026-07-01 11:49:16,613 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents "HTTP/2 201 Created"
+2026-07-01 11:49:16,621 - src.routers.documents - INFO - Starting initial processing for document_id: 0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 11:49:16,630 - src.services.document_processing_service - INFO - parse_document: Starting for path: C:\Users\CHINNI~1\AppData\Local\Temp\tmpcmqox09r.pdf
+2026-07-01 11:49:16,648 - docling.datamodel.document - INFO - detected formats: [<InputFormat.PDF: 'pdf'>]
+2026-07-01 11:49:17,125 - docling.document_converter - INFO - Going to convert document batch...
+2026-07-01 11:49:17,127 - docling.document_converter - INFO - Initializing pipeline for StandardPdfPipeline with options hash 259bce8b6ebd955098094819c170ffe4
+2026-07-01 11:49:17,214 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:49:17,232 - docling.models.factories - INFO - Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+2026-07-01 11:49:17,307 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:49:17,397 - docling.models.factories - INFO - Registered ocr engines: ['auto', 'easyocr', 'kserve_v2_ocr', 'nemotron-ocr', 'ocrmac', 'rapidocr', 'tesserocr', 'tesseract']
+2026-07-01 11:49:18,531 - docling.utils.accelerator_utils - INFO - Accelerator device: 'cpu'
+2026-07-01 11:49:19,362 - docling.models.stages.ocr.auto_ocr_model - INFO - Auto OCR model selected rapidocr with onnxruntime.
+2026-07-01 11:49:19,406 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:49:19,426 - docling.models.factories - INFO - Registered layout engines: ['layout_object_detection', 'docling_layout_default', 'docling_experimental_table_crops_layout']
+2026-07-01 11:49:19,469 - docling.utils.accelerator_utils - INFO - Accelerator device: 'cpu'
+2026-07-01 11:49:21,531 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,062 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-layout-heron/revision/main "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,357 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:22,361 - huggingface_hub.utils._http - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-01 11:49:22,436 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/.gitattributes "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,449 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:22,493 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:22,494 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/docling_heron_400.png "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:22,496 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:22,504 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-layout-heron/resolve/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/model.safetensors "HTTP/1.1 302 Found"
+2026-07-01 11:49:22,506 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,512 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/.gitattributes "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,562 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,569 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/docling_heron_400.png "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,580 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/README.md "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,621 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,688 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,752 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/README.md "HTTP/1.1 200 OK"
+2026-07-01 11:49:22,763 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-layout-heron/8f39ad3c0b4c58e9c2d2c84a38465abf757272d8/docling_heron_400.png "HTTP/1.1 200 OK"
+2026-07-01 11:49:55,578 - docling.models.factories.base_factory - INFO - Loading plugin 'docling_defaults'
+2026-07-01 11:49:55,612 - docling.models.factories - INFO - Registered table structure engines: ['docling_tableformer', 'docling_tableformer_v2', 'granite_vision_table']
+2026-07-01 11:49:56,086 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-models/revision/v2.3.0 "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,440 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,492 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts/tableformer/fast/tableformer_fast.safetensors "HTTP/1.1 302 Found"
+2026-07-01 11:49:56,493 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,513 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts/tableformer/fast/tm_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,520 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitattributes "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,539 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts/tableformer/accurate/tm_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,551 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitignore "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,551 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/README.md "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,552 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts/tableformer/accurate/tableformer_accurate.safetensors "HTTP/1.1 302 Found"
+2026-07-01 11:49:56,553 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts%2Ftableformer%2Ffast%2Ftm_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,599 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts%2Ftableformer%2Faccurate%2Ftm_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,614 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/README.md "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,616 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitignore "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,629 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/docling-project/docling-models/resolve/fc0f2d45e2218ea24bce5045f58a389aed16dc23/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-01 11:49:56,634 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts%2Ftableformer%2Ffast%2Ftm_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,635 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitattributes "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,654 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/model_artifacts%2Ftableformer%2Faccurate%2Ftm_config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,667 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/.gitignore "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,685 - httpx - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/config.json "HTTP/1.1 200 OK"
+2026-07-01 11:49:56,787 - httpx - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/docling-project/docling-models/fc0f2d45e2218ea24bce5045f58a389aed16dc23/config.json "HTTP/1.1 200 OK"
+2026-07-01 11:50:51,041 - docling.utils.accelerator_utils - INFO - Accelerator device: 'cpu'
+2026-07-01 11:50:51,477 - docling.pipeline.base_pipeline - INFO - Processing document tmpcmqox09r.pdf
+2026-07-01 11:50:57,921 - docling.document_converter - INFO - Finished converting document tmpcmqox09r.pdf in 101.27 sec.
+2026-07-01 11:50:59,867 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:50:59,873 - src.services.document_processing_service - INFO - Saved markdown content (5451 chars) to documents table.
+2026-07-01 11:50:59,880 - src.services.document_processing_service - INFO - Successfully parsed 50 segments.
+2026-07-01 11:50:59,881 - src.services.document_processing_service - INFO - Calling LLM for summary overview...
+2026-07-01 11:50:59,882 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:51:01,544 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:51:01,577 - src.core.llm_client - INFO - LLM call: Groq succeeded (475 chars).
+2026-07-01 11:51:01,579 - src.services.document_processing_service - INFO - Saving state for doc_id: 0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 11:51:01,850 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations "HTTP/2 201 Created"
+2026-07-01 11:51:01,883 - src.routers.documents - INFO - Queued background chat indexing for doc_id: 0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 11:51:02,181 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/sign/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/0a123e2e-357b-4cdc-825f-7a6a8172210a/original_chinni_kesana_web_dev.pdf "HTTP/2 200 OK"
+2026-07-01 11:51:02,195 - src.routers.documents - INFO - Cleaned up temp file: C:\Users\CHINNI~1\AppData\Local\Temp\tmpcmqox09r.pdf
+2026-07-01 11:51:02,199 - main - INFO - Response: 201 - 107.216s
+2026-07-01 11:51:02,203 - src.services.document_processing_service - INFO - Starting chat indexing for doc_id: 0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 11:51:02,606 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:53:35,794 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 0a123e2e-357b-4cdc-825f-7a6a8172210a: 
+2026-07-01 11:53:35,794 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 0a123e2e-357b-4cdc-825f-7a6a8172210a: 
+2026-07-01 11:53:35,794 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 0a123e2e-357b-4cdc-825f-7a6a8172210a: 
+2026-07-01 11:53:54,521 - main - INFO - Request: OPTIONS /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:54,529 - main - INFO - Response: 200 - 0.009s
+2026-07-01 11:53:54,532 - main - INFO - Request: GET /api/documents/stream/0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 11:53:54,533 - main - INFO - Request: OPTIONS /api/chat/0a123e2e-357b-4cdc-825f-7a6a8172210a/chat
+2026-07-01 11:53:54,534 - main - INFO - Request: OPTIONS /api/chat/0a123e2e-357b-4cdc-825f-7a6a8172210a/chat
+2026-07-01 11:53:54,535 - main - INFO - Request: OPTIONS /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:56,083 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=document_id&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:56,506 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?select=narration_bbox%2Craw_data%2Ccontext&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:53:56,676 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=extra_input&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:53:56,681 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:53:56,685 - main - INFO - Response: 200 - 2.152s
+2026-07-01 11:53:56,710 - main - INFO - Response: 200 - 2.175s
+2026-07-01 11:53:56,712 - main - INFO - Response: 200 - 2.178s
+2026-07-01 11:53:56,715 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:56,717 - main - INFO - Response: 200 - 2.185s
+2026-07-01 11:53:56,970 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:56,983 - main - INFO - Response: 200 - 0.268s
+2026-07-01 11:53:56,986 - main - INFO - Request: POST /api/chat/0a123e2e-357b-4cdc-825f-7a6a8172210a/chat
+2026-07-01 11:53:56,990 - main - INFO - Request: GET /api/chat/0a123e2e-357b-4cdc-825f-7a6a8172210a/chat
+2026-07-01 11:53:57,620 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/chat_sessions?select=chat_history%2Csession_id&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 406 Not Acceptable"
+2026-07-01 11:53:57,625 - src.routers.chat - ERROR - Error fetching chat history: {'message': 'Cannot coerce the result to a single JSON object', 'code': 'PGRST116', 'hint': None, 'details': 'The result contains 0 rows'}
+2026-07-01 11:53:57,625 - src.routers.chat - ERROR - Error fetching chat history: {'message': 'Cannot coerce the result to a single JSON object', 'code': 'PGRST116', 'hint': None, 'details': 'The result contains 0 rows'}
+2026-07-01 11:53:57,625 - src.routers.chat - ERROR - Error fetching chat history: {'message': 'Cannot coerce the result to a single JSON object', 'code': 'PGRST116', 'hint': None, 'details': 'The result contains 0 rows'}
+2026-07-01 11:53:57,630 - main - WARNING - HTTP exception: 500 - Failed to fetch chat history
+2026-07-01 11:53:57,631 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:57,634 - main - INFO - Response: 500 - 0.644s
+2026-07-01 11:53:57,798 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:57,814 - main - INFO - Request: POST /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:58,582 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:58,750 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:58,763 - src.routers.summary - INFO - Generating summary for document_id 0a123e2e-357b-4cdc-825f-7a6a8172210a using LLM client...
+2026-07-01 11:53:58,766 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:53:59,050 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=document_id&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:59,225 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/chat_sessions?select=session_id%2Cchat_history&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:59,251 - src.core.embedding_client - INFO - Embedding batch 1: 1 texts...
+2026-07-01 11:53:59,310 - main - INFO - Response: 200 - 1.679s
+2026-07-01 11:53:59,325 - main - INFO - Request: POST /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 11:53:59,499 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:59,647 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:53:59,668 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:53:59,670 - src.routers.summary - INFO - Generating summary for document_id 0a123e2e-357b-4cdc-825f-7a6a8172210a using LLM client...
+2026-07-01 11:53:59,674 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:53:59,684 - src.core.embedding_client - ERROR - Embedding generation failed: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,684 - src.core.embedding_client - ERROR - Embedding generation failed: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,684 - src.core.embedding_client - ERROR - Embedding generation failed: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,689 - src.routers.chat - ERROR - Failed to generate embedding: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,689 - src.routers.chat - ERROR - Failed to generate embedding: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,689 - src.routers.chat - ERROR - Failed to generate embedding: [Errno 11001] getaddrinfo failed
+2026-07-01 11:53:59,695 - main - WARNING - HTTP exception: 500 - Failed to generate embedding for vector search.
+2026-07-01 11:53:59,698 - src.core.llm_client - INFO - LLM call: Groq succeeded (4259 chars).
+2026-07-01 11:53:59,706 - main - INFO - Response: 500 - 2.720s
+2026-07-01 11:53:59,776 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 11:53:59,779 - openai._base_client - INFO - Retrying request to /chat/completions in 8.000000 seconds
+2026-07-01 11:54:00,122 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:00,148 - src.services.document_processing_service - INFO - Finalizing document 0a123e2e-357b-4cdc-825f-7a6a8172210a. Clearing raw_data column.
+2026-07-01 11:54:00,333 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:00,383 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:54:00,518 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:00,694 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:00,720 - src.core.llm_client - INFO - LLM call: Groq succeeded (2173 chars).
+2026-07-01 11:54:00,882 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:00,894 - src.routers.summary - INFO - Successfully generated and saved summary for document_id 0a123e2e-357b-4cdc-825f-7a6a8172210a.
+2026-07-01 11:54:00,895 - main - INFO - Response: 200 - 3.081s
+2026-07-01 11:54:08,166 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 11:54:08,168 - openai._base_client - INFO - Retrying request to /chat/completions in 1.000000 seconds
+2026-07-01 11:54:10,699 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:54:10,716 - src.core.llm_client - INFO - LLM call: Groq succeeded (2139 chars).
+2026-07-01 11:54:11,001 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 11:54:11,012 - src.routers.summary - INFO - Successfully generated and saved summary for document_id 0a123e2e-357b-4cdc-825f-7a6a8172210a.
+2026-07-01 11:54:11,014 - main - INFO - Response: 200 - 11.689s
+2026-07-01 11:55:35,144 - main - INFO - Request: OPTIONS /api/knowledgetest/0a123e2e-357b-4cdc-825f-7a6a8172210a/knowledgetest
+2026-07-01 11:55:35,146 - main - INFO - Request: OPTIONS /api/knowledgetest/0a123e2e-357b-4cdc-825f-7a6a8172210a/knowledgetest
+2026-07-01 11:55:35,150 - main - INFO - Response: 200 - 0.007s
+2026-07-01 11:55:35,156 - main - INFO - Response: 200 - 0.009s
+2026-07-01 11:55:35,163 - main - INFO - Request: POST /api/knowledgetest/0a123e2e-357b-4cdc-825f-7a6a8172210a/knowledgetest
+2026-07-01 11:55:36,677 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:55:36,679 - src.routers.knowledgetest - INFO - Generating knowledge test for doc_id 0a123e2e-357b-4cdc-825f-7a6a8172210a with LLM client...
+2026-07-01 11:55:36,681 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:55:36,684 - main - INFO - Request: POST /api/knowledgetest/0a123e2e-357b-4cdc-825f-7a6a8172210a/knowledgetest
+2026-07-01 11:55:36,875 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 11:55:36,881 - src.routers.knowledgetest - INFO - Generating knowledge test for doc_id 0a123e2e-357b-4cdc-825f-7a6a8172210a with LLM client...
+2026-07-01 11:55:36,882 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 11:55:37,188 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 11:55:37,193 - openai._base_client - INFO - Retrying request to /chat/completions in 38.000000 seconds
+2026-07-01 11:55:41,487 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:55:44,560 - src.core.llm_client - INFO - LLM call: Groq succeeded (6413 chars).
+2026-07-01 11:55:44,561 - src.routers.knowledgetest - INFO - Successfully generated knowledge test.
+2026-07-01 11:55:44,562 - main - INFO - Response: 200 - 9.398s
+2026-07-01 11:56:20,167 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 11:56:20,173 - src.core.llm_client - INFO - LLM call: Groq succeeded (7047 chars).
+2026-07-01 11:56:20,177 - src.routers.knowledgetest - INFO - Successfully generated knowledge test.
+2026-07-01 11:56:20,182 - main - INFO - Response: 200 - 43.498s
