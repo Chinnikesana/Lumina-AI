@@ -4,8 +4,7 @@ import json
 import traceback
 from typing import Dict, List, Any, Optional, AsyncGenerator
 
-import spacy
-from spacy_layout import spaCyLayout
+import fitz  # PyMuPDF
 
 from ..core.logger import get_logger
 from ..core.supabase_client import supabase_client
@@ -14,13 +13,6 @@ from ..core.llm_client import call_llm, parse_json_response
 from ..core.embedding_client import get_embeddings
 
 logger = get_logger(__name__)
-
-# Ensure docling/spacy_layout PDF backend is available
-try:
-    import pypdfium2  
-except Exception as e:
-    logger.error("Dependency missing: pypdfium2 is required by spacy_layout/docling.")
-    raise
 
 # --- 1. LLM Prompts & Setup ---
 
@@ -71,56 +63,83 @@ def build_detailed_prompt(context: Optional[str], chunk: Dict[str, Any], clean_t
         "}}"
     )
 
-nlp = spacy.blank("en")
-layout = spaCyLayout(nlp)
-
 # --- 2. Pipeline Functions (Replaces LangGraph) ---
 
 async def parse_document(document_id: str, local_path: str) -> Dict[str, Any]:
-    """Parses text, layout, AND tables from the document."""
-    logger.info(f"parse_document: Starting for path: {local_path}")
+    """Parses text blocks and coordinates from the document using PyMuPDF."""
+    logger.info(f"parse_document: Starting for path: {local_path} with PyMuPDF")
     try:
-        # Offload CPU-heavy spaCy parsing to a thread
         def _parse():
-            doc = layout(local_path)
-            markdown_text = doc._.markdown
+            doc = fitz.open(local_path)
             
+            all_segments = []
+            bbox_index = {}
+            counter = 1
+            full_markdown_parts = []
+            
+            for page_num in range(len(doc)):
+                page = doc[page_num]
+                
+                # Extract text blocks
+                # format: (x0, y0, x1, y1, "lines in block", block_no, block_type)
+                # block_type 0 = text, 1 = image
+                blocks = page.get_text("blocks")
+                
+                # Sort blocks by y coordinate, then x coordinate
+                blocks.sort(key=lambda b: (b[1], b[0]))
+                
+                for b in blocks:
+                    # Ignore images
+                    if b[-1] == 1:
+                        continue
+                    
+                    text = b[4].strip()
+                    if not text:
+                        continue
+                        
+                    x0, y0, x1, y1 = b[:4]
+                    width = x1 - x0
+                    height = y1 - y0
+                    
+                    seg_id = f"seg_{counter}"
+                    bbox = {
+                        "x": x0, 
+                        "y": y0, 
+                        "width": width, 
+                        "height": height, 
+                        "page_no": page_num + 1
+                    }
+                    
+                    segment = {
+                        "id": seg_id, 
+                        "text": text, 
+                        "label": "text", 
+                        "bbox": bbox
+                    }
+                    
+                    all_segments.append(segment)
+                    bbox_index[seg_id] = segment
+                    counter += 1
+                    full_markdown_parts.append(text)
+            
+            # Save raw text as markdown representation
+            markdown_text = "\n\n".join(full_markdown_parts)
             if markdown_text:
                 supabase_client.table('documents').update({
                     'doc_content': markdown_text
                 }).eq('document_id', document_id).execute()
                 logger.info(f"Saved markdown content ({len(markdown_text)} chars) to documents table.")
-            
-            all_segments, bbox_index, counter = [], {}, 1
-            
-            for span in doc.spans.get("layout", []):
-                if not span.text.strip(): continue
-                span_layout = span._.layout
-                seg_id = f"seg_{counter}"
-                bbox = {"x": span_layout.x, "y": span_layout.y, "width": span_layout.width, "height": span_layout.height, "page_no": span_layout.page_no}
-                segment = {"id": seg_id, "text": span.text, "label": span.label_, "bbox": bbox}
-                all_segments.append(segment)
-                bbox_index[seg_id] = segment
-                counter += 1
-
-            for table in doc._.tables:
-                seg_id = f"seg_{counter}"
-                table_md = table.to_markdown().strip()
-                bbox_ref = table.cells[0][0]._.layout if table.cells and table.cells[0] else None
-                bbox = {"x": bbox_ref.x, "y": bbox_ref.y, "width": bbox_ref.width, "height": bbox_ref.height, "page_no": table.page_no} if bbox_ref else None
-                segment = {"id": seg_id, "text": f"The following is a data table:\n\n{table_md}", "label": "table", "bbox": bbox}
-                all_segments.append(segment)
-                bbox_index[seg_id] = segment
-                counter += 1
                 
-            all_segments.sort(key=lambda s: ((s['bbox'] or {}).get('page_no', 0), (s['bbox'] or {}).get('y', 0)))
+            doc.close()
             return {"text_segments": all_segments, "bounding_box_index": bbox_index}
 
         parsed_data = await asyncio.to_thread(_parse)
-        logger.info(f"Successfully parsed {len(parsed_data['text_segments'])} segments.")
+        logger.info(f"Successfully parsed {len(parsed_data['text_segments'])} segments using PyMuPDF.")
         return parsed_data
     except Exception as e:
-        logger.error(f"CRITICAL FAILURE in parse_document: {e}"); traceback.print_exc(); raise
+        logger.error(f"CRITICAL FAILURE in parse_document: {e}")
+        traceback.print_exc()
+        raise
 
 async def generate_overview(parsed_data: Dict[str, Any], user_input: Optional[str]) -> str:
     """Generates the document overview."""

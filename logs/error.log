@@ -24872,3 +24872,170 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2026-07-01 11:56:20,173 - src.core.llm_client - INFO - LLM call: Groq succeeded (7047 chars).
 2026-07-01 11:56:20,177 - src.routers.knowledgetest - INFO - Successfully generated knowledge test.
 2026-07-01 11:56:20,182 - main - INFO - Response: 200 - 43.498s
+2026-07-01 12:42:59,116 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 12:43:55,779 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 12:43:56,946 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 12:43:56,960 - main - INFO - Supabase connection successful
+2026-07-01 12:43:56,962 - main - INFO - API routers loaded successfully
+2026-07-01 12:44:32,435 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 12:44:45,117 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 12:44:46,198 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 12:44:46,202 - main - INFO - Supabase connection successful
+2026-07-01 12:44:46,208 - main - INFO - API routers loaded successfully
+2026-07-01 12:46:05,056 - main - INFO - Request: OPTIONS /api/documents/0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 12:46:05,062 - main - INFO - Request: OPTIONS /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:05,070 - main - INFO - Request: OPTIONS /api/documents/0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 12:46:05,083 - main - INFO - Request: OPTIONS /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:05,095 - main - INFO - Response: 200 - 0.039s
+2026-07-01 12:46:05,113 - main - INFO - Response: 200 - 0.052s
+2026-07-01 12:46:05,117 - main - INFO - Response: 200 - 0.048s
+2026-07-01 12:46:05,127 - main - INFO - Response: 200 - 0.044s
+2026-07-01 12:46:05,133 - main - INFO - Request: GET /api/documents/0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 12:46:05,722 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed "HTTP/2 200 OK"
+2026-07-01 12:46:06,150 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?select=%2A&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 12:46:06,695 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/sign/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/0a123e2e-357b-4cdc-825f-7a6a8172210a/original_chinni_kesana_web_dev.pdf "HTTP/2 200 OK"
+2026-07-01 12:46:06,759 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:06,772 - main - INFO - Response: 200 - 1.640s
+2026-07-01 12:46:07,002 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:46:07,011 - main - INFO - Response: 200 - 0.251s
+2026-07-01 12:46:07,017 - main - INFO - Request: GET /api/documents/0a123e2e-357b-4cdc-825f-7a6a8172210a
+2026-07-01 12:46:07,187 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed "HTTP/2 200 OK"
+2026-07-01 12:46:07,374 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?select=%2A&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a "HTTP/2 200 OK"
+2026-07-01 12:46:07,823 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/sign/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/0a123e2e-357b-4cdc-825f-7a6a8172210a/original_chinni_kesana_web_dev.pdf "HTTP/2 200 OK"
+2026-07-01 12:46:07,847 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:07,852 - main - INFO - Response: 200 - 0.835s
+2026-07-01 12:46:08,012 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:46:08,029 - main - INFO - Request: OPTIONS /api/documents/
+2026-07-01 12:46:08,037 - main - INFO - Request: OPTIONS /api/documents/
+2026-07-01 12:46:08,045 - main - INFO - Response: 200 - 0.198s
+2026-07-01 12:46:08,049 - main - INFO - Response: 200 - 0.021s
+2026-07-01 12:46:08,061 - main - INFO - Response: 200 - 0.023s
+2026-07-01 12:46:08,069 - main - INFO - Request: GET /api/documents/
+2026-07-01 12:46:08,075 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:08,253 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 12:46:08,259 - src.routers.documents - INFO - Retrieved 1 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 12:46:08,433 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:46:08,437 - main - INFO - Response: 200 - 0.368s
+2026-07-01 12:46:08,440 - main - INFO - Response: 200 - 0.365s
+2026-07-01 12:46:08,444 - main - INFO - Request: GET /api/documents/
+2026-07-01 12:46:08,620 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 12:46:08,625 - src.routers.documents - INFO - Retrieved 1 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 12:46:08,632 - main - INFO - Request: GET /api/summary/0a123e2e-357b-4cdc-825f-7a6a8172210a/summary
+2026-07-01 12:46:08,645 - main - INFO - Response: 200 - 0.201s
+2026-07-01 12:46:08,821 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.0a123e2e-357b-4cdc-825f-7a6a8172210a&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:46:08,837 - main - INFO - Response: 200 - 0.205s
+2026-07-01 12:46:23,466 - main - INFO - Request: OPTIONS /api/documents/upload
+2026-07-01 12:46:23,468 - main - INFO - Response: 200 - 0.003s
+2026-07-01 12:46:23,480 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 12:46:25,806 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/c21d5436-5cc6-4a6b-b1ca-a481eea43df8/original_Full-Stack%20Developer%20Training%20_%20Digital%20Heroes.pdf "HTTP/2 200 OK"
+2026-07-01 12:46:26,397 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents "HTTP/2 201 Created"
+2026-07-01 12:46:26,428 - src.routers.documents - INFO - Starting initial processing for document_id: c21d5436-5cc6-4a6b-b1ca-a481eea43df8
+2026-07-01 12:46:26,429 - src.routers.documents - ERROR - Upload failed critically: name 'logger' is not defined
+2026-07-01 12:46:26,429 - src.routers.documents - ERROR - Upload failed critically: name 'logger' is not defined
+2026-07-01 12:46:26,429 - src.routers.documents - ERROR - Upload failed critically: name 'logger' is not defined
+2026-07-01 12:46:26,441 - src.routers.documents - INFO - Cleaned up temp file: C:\Users\CHINNI~1\AppData\Local\Temp\tmp8jeur6tv.pdf
+2026-07-01 12:46:26,442 - main - WARNING - HTTP exception: 500 - Failed to upload document: name 'logger' is not defined
+2026-07-01 12:46:26,444 - main - INFO - Response: 500 - 2.965s
+2026-07-01 12:46:46,282 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 12:49:58,215 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 12:49:58,956 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 12:49:58,964 - main - INFO - Supabase connection successful
+2026-07-01 12:49:58,965 - main - INFO - API routers loaded successfully
+2026-07-01 12:50:19,237 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 12:50:21,506 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/28ce6645-0e60-4f71-b18a-7050b4a5b713/original_Full-Stack%20Developer%20Training%20_%20Digital%20Heroes.pdf "HTTP/2 200 OK"
+2026-07-01 12:50:21,941 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents "HTTP/2 201 Created"
+2026-07-01 12:50:21,972 - src.routers.documents - INFO - Starting initial processing for document_id: 28ce6645-0e60-4f71-b18a-7050b4a5b713
+2026-07-01 12:50:21,979 - src.services.document_processing_service - INFO - parse_document: Starting for path: C:\Users\CHINNI~1\AppData\Local\Temp\tmpra6bnvwe.pdf with PyMuPDF
+2026-07-01 12:50:22,471 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:50:22,485 - src.services.document_processing_service - INFO - Saved markdown content (632 chars) to documents table.
+2026-07-01 12:50:22,488 - src.services.document_processing_service - INFO - Successfully parsed 18 segments using PyMuPDF.
+2026-07-01 12:50:22,490 - src.services.document_processing_service - INFO - Calling LLM for summary overview...
+2026-07-01 12:50:22,492 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 12:50:25,361 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 12:50:25,413 - src.core.llm_client - INFO - LLM call: Groq succeeded (412 chars).
+2026-07-01 12:50:25,417 - src.services.document_processing_service - INFO - Saving state for doc_id: 28ce6645-0e60-4f71-b18a-7050b4a5b713
+2026-07-01 12:50:25,671 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations "HTTP/2 201 Created"
+2026-07-01 12:50:25,692 - src.routers.documents - INFO - Queued background chat indexing for doc_id: 28ce6645-0e60-4f71-b18a-7050b4a5b713
+2026-07-01 12:50:25,897 - httpx - INFO - HTTP Request: POST https://sleqislzsjckwljtdcby.supabase.co/storage/v1/object/sign/docs_store/user_82770386-3fe3-4a3d-b5e0-e10bc0c638db/28ce6645-0e60-4f71-b18a-7050b4a5b713/original_Full-Stack%20Developer%20Training%20_%20Digital%20Heroes.pdf "HTTP/2 200 OK"
+2026-07-01 12:50:25,906 - src.routers.documents - INFO - Cleaned up temp file: C:\Users\CHINNI~1\AppData\Local\Temp\tmpra6bnvwe.pdf
+2026-07-01 12:50:25,920 - main - INFO - Response: 201 - 6.683s
+2026-07-01 12:50:25,929 - src.services.document_processing_service - INFO - Starting chat indexing for doc_id: 28ce6645-0e60-4f71-b18a-7050b4a5b713
+2026-07-01 12:50:26,129 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:52:49,949 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 28ce6645-0e60-4f71-b18a-7050b4a5b713: 
+2026-07-01 12:52:49,949 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 28ce6645-0e60-4f71-b18a-7050b4a5b713: 
+2026-07-01 12:52:49,949 - src.services.document_processing_service - ERROR - Chat indexing background task failed for doc_id 28ce6645-0e60-4f71-b18a-7050b4a5b713: 
+2026-07-01 12:53:29,405 - main - INFO - Request: OPTIONS /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:29,408 - main - INFO - Request: OPTIONS /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:29,416 - main - INFO - Response: 200 - 0.014s
+2026-07-01 12:53:29,420 - main - INFO - Response: 200 - 0.012s
+2026-07-01 12:53:29,422 - main - INFO - Request: GET /api/documents/
+2026-07-01 12:53:29,423 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 12:53:29,427 - main - INFO - Request: GET /api/documents/stream/28ce6645-0e60-4f71-b18a-7050b4a5b713
+2026-07-01 12:53:29,428 - main - INFO - Request: GET /api/documents/
+2026-07-01 12:53:30,182 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 12:53:30,198 - src.routers.documents - INFO - Retrieved 1 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 12:53:30,435 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=document_id&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:30,879 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=%2A&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db&status=eq.completed&order=created_at.desc "HTTP/2 200 OK"
+2026-07-01 12:53:30,881 - src.routers.documents - INFO - Retrieved 1 documents for user 82770386-3fe3-4a3d-b5e0-e10bc0c638db
+2026-07-01 12:53:30,883 - main - INFO - Response: 200 - 1.461s
+2026-07-01 12:53:31,261 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/narrations?select=narration_bbox%2Craw_data%2Ccontext&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:53:31,526 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=extra_input&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:53:31,619 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 12:53:31,623 - main - INFO - Response: 200 - 2.194s
+2026-07-01 12:53:31,645 - main - INFO - Request: GET /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:31,650 - main - INFO - Response: 200 - 2.223s
+2026-07-01 12:53:32,391 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:32,410 - main - INFO - Response: 200 - 0.764s
+2026-07-01 12:53:32,419 - main - WARNING - HTTP exception: 400 - Invalid file type. Only PDF files are supported.
+2026-07-01 12:53:32,422 - main - INFO - Response: 400 - 3.000s
+2026-07-01 12:53:32,426 - main - INFO - Request: GET /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:32,613 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:32,632 - main - INFO - Request: POST /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:32,636 - main - INFO - Response: 200 - 0.211s
+2026-07-01 12:53:33,517 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:34,428 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:34,431 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 12:53:34,433 - src.routers.summary - INFO - Generating summary for document_id 28ce6645-0e60-4f71-b18a-7050b4a5b713 using LLM client...
+2026-07-01 12:53:34,445 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 12:53:34,537 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 12:53:34,544 - openai._base_client - INFO - Retrying request to /chat/completions in 29.000000 seconds
+2026-07-01 12:53:34,577 - main - INFO - Request: POST /api/summary/28ce6645-0e60-4f71-b18a-7050b4a5b713/summary
+2026-07-01 12:53:34,961 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=doc_content&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:35,860 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?select=summary&document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713&user_id=eq.82770386-3fe3-4a3d-b5e0-e10bc0c638db "HTTP/2 200 OK"
+2026-07-01 12:53:35,861 - src.routers.summary - INFO - Generating summary for document_id 28ce6645-0e60-4f71-b18a-7050b4a5b713 using LLM client...
+2026-07-01 12:53:35,864 - src.core.llm_client - INFO - LLM call: Attempting Groq (llama-3.3-70b-versatile)...
+2026-07-01 12:53:35,949 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-01 12:53:35,955 - openai._base_client - INFO - Retrying request to /chat/completions in 27.000000 seconds
+2026-07-01 12:54:03,805 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 12:54:03,821 - src.core.llm_client - INFO - LLM call: Groq succeeded (1171 chars).
+2026-07-01 12:54:04,229 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:54:04,232 - src.routers.summary - INFO - Successfully generated and saved summary for document_id 28ce6645-0e60-4f71-b18a-7050b4a5b713.
+2026-07-01 12:54:04,236 - main - INFO - Response: 200 - 29.659s
+2026-07-01 12:54:04,433 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-01 12:54:04,441 - src.core.llm_client - INFO - LLM call: Groq succeeded (1227 chars).
+2026-07-01 12:54:04,629 - httpx - INFO - HTTP Request: PATCH https://sleqislzsjckwljtdcby.supabase.co/rest/v1/documents?document_id=eq.28ce6645-0e60-4f71-b18a-7050b4a5b713 "HTTP/2 200 OK"
+2026-07-01 12:54:04,632 - src.routers.summary - INFO - Successfully generated and saved summary for document_id 28ce6645-0e60-4f71-b18a-7050b4a5b713.
+2026-07-01 12:54:04,634 - main - INFO - Response: 200 - 32.002s
+2026-07-01 12:54:45,544 - main - INFO - Request: POST /api/documents/upload
+2026-07-01 12:54:45,551 - main - WARNING - HTTP exception: 400 - Invalid file type. Only PDF files are supported.
+2026-07-01 12:54:45,559 - main - INFO - Response: 400 - 0.015s
+2026-07-01 13:04:27,924 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 13:04:33,858 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 13:04:34,641 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 13:04:34,661 - main - INFO - Supabase connection successful
+2026-07-01 13:04:34,663 - main - INFO - API routers loaded successfully
+2026-07-01 13:04:48,943 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 13:04:51,616 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 13:04:52,182 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 13:04:52,188 - main - INFO - Supabase connection successful
+2026-07-01 13:04:52,189 - main - INFO - API routers loaded successfully
+2026-07-01 13:04:59,721 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 13:05:02,279 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 13:05:02,777 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 13:05:02,781 - main - INFO - Supabase connection successful
+2026-07-01 13:05:02,784 - main - INFO - API routers loaded successfully
+2026-07-01 13:07:27,430 - main - INFO - Shutting down Lumina AI Tutor Backend
+2026-07-01 13:07:35,812 - main - INFO - Starting Lumina AI Tutor Backend
+2026-07-01 13:07:36,746 - httpx - INFO - HTTP Request: GET https://sleqislzsjckwljtdcby.supabase.co/rest/v1/users?select=%2A&limit=1 "HTTP/2 200 OK"
+2026-07-01 13:07:36,761 - main - INFO - Supabase connection successful
+2026-07-01 13:07:36,764 - main - INFO - API routers loaded successfully

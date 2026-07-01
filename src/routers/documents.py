@@ -39,8 +39,8 @@ async def upload_document(
     try:
         doc_type = DocumentType(type.lower())
         
-        if not file.filename.lower().endswith(('.pdf',)): # Currently optimized for PDF
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid file type. Only PDF files are supported.")
+        if not file.filename.lower().endswith(('.pdf', '.txt')):
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid file type. Only PDF and TXT files are supported.")
 
         document_id = str(uuid.uuid4())
         storage_rel_path = f"user_{user_id}/{document_id}/original_{file.filename}"

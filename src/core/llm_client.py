@@ -19,6 +19,13 @@ groq_client = OpenAI(
     api_key=settings.GROQ_API_KEY,
 )
 
+groq_client_2 = None
+if settings.GROQ_API_KEY_2:
+    groq_client_2 = OpenAI(
+        base_url="https://api.groq.com/openai/v1",
+        api_key=settings.GROQ_API_KEY_2,
+    )
+
 # --- OpenRouter Client (Fallback) ---
 OPENROUTER_API_KEY = settings.OPENROUTER_API_KEY or settings.OPENROUTER_API_KEY2
 openrouter_client = OpenAI(
@@ -51,8 +58,9 @@ async def call_llm(
 ) -> str:
     """
     Call an LLM with automatic fallback chain:
-    1. Groq (llama-3.3-70b-versatile)
-    2. OpenRouter fallback models
+    1. Groq (llama-3.3-70b-versatile) - Key 1
+    2. Groq (llama-3.3-70b-versatile) - Key 2 (if provided and Key 1 rate limited)
+    3. OpenRouter fallback models
 
     Args:
         prompt: The user prompt to send.
@@ -76,28 +84,43 @@ async def call_llm(
     if json_mode:
         extra_kwargs["response_format"] = {"type": "json_object"}
 
-    # --- Attempt 1: Groq ---
+    # Helper function for Groq calls
+    def _call_groq(client):
+        return client.chat.completions.create(
+            model=GROQ_PRIMARY_MODEL,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **extra_kwargs,
+        )
+
+    # --- Attempt 1: Groq (Key 1) ---
     try:
-        logger.info(f"LLM call: Attempting Groq ({GROQ_PRIMARY_MODEL})...")
-
-        def _call_groq():
-            return groq_client.chat.completions.create(
-                model=GROQ_PRIMARY_MODEL,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                **extra_kwargs,
-            )
-
-        completion = await asyncio.to_thread(_call_groq)
+        logger.info(f"LLM call: Attempting Groq ({GROQ_PRIMARY_MODEL}) with Key 1...")
+        completion = await asyncio.to_thread(_call_groq, groq_client)
         content = completion.choices[0].message.content
         if content:
-            logger.info(f"LLM call: Groq succeeded ({len(content)} chars).")
+            logger.info(f"LLM call: Groq (Key 1) succeeded ({len(content)} chars).")
             return content
         else:
-            logger.warning("LLM call: Groq returned empty content.")
+            logger.warning("LLM call: Groq (Key 1) returned empty content.")
     except Exception as e:
-        logger.warning(f"LLM call: Groq failed: {e}. Trying fallbacks...")
+        logger.warning(f"LLM call: Groq (Key 1) failed: {e}.")
+        # --- Attempt 1.5: Groq (Key 2) ---
+        if groq_client_2:
+            try:
+                logger.info(f"LLM call: Attempting Groq ({GROQ_PRIMARY_MODEL}) with Key 2...")
+                completion = await asyncio.to_thread(_call_groq, groq_client_2)
+                content = completion.choices[0].message.content
+                if content:
+                    logger.info(f"LLM call: Groq (Key 2) succeeded ({len(content)} chars).")
+                    return content
+                else:
+                    logger.warning("LLM call: Groq (Key 2) returned empty content.")
+            except Exception as e2:
+                logger.warning(f"LLM call: Groq (Key 2) failed: {e2}. Trying OpenRouter fallbacks...")
+        else:
+            logger.info("No second Groq API key available. Trying OpenRouter fallbacks...")
 
     # --- Attempts 2+: OpenRouter Fallbacks ---
     for model_info in OPENROUTER_FALLBACK_MODELS:

@@ -28,13 +28,8 @@ httpx
 openai               # Used for Groq + OpenRouter (OpenAI-compatible SDK)
 google-generativeai  # Kept for Gemini fallback (lightweight, no torch)
 
-# NLP and PDF (spacy-layout for precise bounding boxes)
-spacy
-spacy-layout
-pymupdf
-aiofiles
-pypdfium2
+# Document Parsing
+PyMuPDF
 
 # Utilities
 pgvector
-onnxruntime
