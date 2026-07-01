@@ -20,8 +20,6 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Download the spaCy small English model required for spacy-layout
-RUN python -m spacy download en_core_web_sm
 
 # Copy the rest of the backend application
 COPY . .
